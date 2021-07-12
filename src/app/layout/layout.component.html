@@ -1,1 +1,39 @@
-<p>layout works!</p>
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <div class="form-group">
+      <label>Nivel</label>
+      <input type="range" [(ngModel)]="level" class="form-control" min="1" max="3" step="1"/>
+    </div>
+  </div>
+  <div class="col-12 offset-lg-4 col-lg-4">
+    <div cass="form-group">
+      <label>
+        <input type="checkbox" [(ngModel)]="enableNotTable"/> Enable Not Table
+      </label>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="table-responsive" [ngClass]="getLabel()">
+  <table class="table table-bordered" [ngClass]="{'not-table':enableNotTable}">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Contenido</th>
+        <th>Ícono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let register of registers">
+        <td>{{register.title}}</td>
+        <td>{{register.content}}</td>
+        <td>
+          <span class="fa-stack fa-2x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-stack-1x fa-inverse" [ngClass]="register.icon"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
